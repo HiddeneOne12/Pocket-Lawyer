@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+/// Service for handling API communications with the legal AI backend
 class ApiService {
   static const String baseUrl = 'https://ai.kanoony.com/api/ai/chat';
   static String? _sessionId;
@@ -18,6 +19,12 @@ class ApiService {
     return List.generate(10, (index) => chars[DateTime.now().millisecondsSinceEpoch % chars.length]).join();
   }
 
+  /// Sends a message to the AI legal assistant
+  /// 
+  /// [message] The text message to send
+  /// [messageType] The type of message ('text' or 'voice')
+  /// 
+  /// Returns a Map containing the API response
   static Future<Map<String, dynamic>> sendMessage({
     required String message,
     required String messageType, // 'text' or 'voice'
@@ -65,6 +72,7 @@ class ApiService {
     }
   }
 
+  /// Resets the current session
   static void resetSession() {
     _sessionId = null;
     _messageCount = 0;

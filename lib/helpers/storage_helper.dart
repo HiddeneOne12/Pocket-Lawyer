@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:pocket_lawyer/main.dart';
+import '../domain/models/chat_message.dart';
 class StorageHelper {
   static Future<void> saveMessages(List<ChatMessage> messages, String storagePath) async {
     try {
